@@ -1,11 +1,9 @@
 from django.db import models
-from courses.models import Course
 
-class Student(models.Model):
+class Teacher(models.Model):
     name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
-
-    course = models.ForeignKey(Course, on_delete= models.RESTRICT, null=True, related_name='students')
+    hire_date =  models.DateField(null=True, blank=True)
 
     def __str__(self):
         return self.name

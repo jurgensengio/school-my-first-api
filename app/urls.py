@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from students.views import StudentCreateListView, StudentRetrieveUpdateDestroy
+from teachers.views import TeacherCreateListView, TeacherRetrieveUpdateDestroy
+from courses.views import CourseCreateListView, CourseRetrieveUpdateDestroy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +29,9 @@ urlpatterns = [
     #se bater na rota students/id com um get, ele exibe o aluno correspondente
     #se bater na rota students/id com um put/patch, ele atualiza o aluno correspondente
     #se bater na rota students/id com um delete, ele deleta o aluno correspondente
+    path('teachers/', TeacherCreateListView.as_view(), name='teacher-create-list'),
+    path('teachers/<int:pk>', TeacherRetrieveUpdateDestroy.as_view(), name='teacher-detail-view'),
+
+    path('courses/', CourseCreateListView.as_view(), name='course-create-list'),
+    path('courses/<int:pk>', CourseRetrieveUpdateDestroy.as_view(), name='course-detail-view'),
 ]
